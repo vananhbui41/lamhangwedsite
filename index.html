@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Lâm &amp; Hằng Wedding</title>
+<meta content="Thiệp mời cưới Lâm và Hằng" name="description">
+<link rel="shortcut icon" type="image/x-icon" href="https://site-48919.wedsites.com/favicon" />
+<style>
+  #site {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+<iframe id="site">
+  <script>
+    window.location.replace("https://site-48919.wedsites.com/" + window.location.search);
+  </script>
+</iframe>
+<script>
+  document.getElementById("site").src = "https://site-48919.wedsites.com" + window.location.hash.substr(1) + window.location.search + "#/reload";
+  window.addEventListener("message", (event) => {
+    if (event.origin.split('.').slice(1).join('.').replace(/\/$/, "") !== "wedsites.com") {
+      return;
+    }
+    if (event.data.reload) {
+      history.pushState(event.data.url, event.data.title, "/#" + event.data.path);
+    }
+    document.title = event.data.title;
+  }, false);
+
+  window.onpopstate = function(event) {
+    location.reload();
+  };
+</script>
+</body>
+</html>
